@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlioFlie</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+        <header>
+            <div><strong>BiblioFile</strong></div>
+            <nav>
+                <a href="#">Dashboard</a>
+                <a href="#">Meus Livros</a>
+                <a href="#">Comunidade</a>
+                <a href="#">Recomendações</a>
+            </nav>
+            <input type="search" placeholder="Buscar livros...">
+        </header>
+
+        <div class="container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="perfil">
+                    <img src="../img/mortal-kombat-11-scorpion-ninja-fire-get-over-here-netherrea.webp" alt="Avatar">
+                    <h3>Maria Silva</h3>
+                    <p>Leitora ávida</p>
+                    <p><strong>47</strong> Livros Lidos<br>
+                        <strong>4.2</strong> Média de Notas
+                    </p>
+                </div>
+
+                <div class="filtros">
+                    <h4>Filtros</h4>
+                    <label>Gênero</label>
+                    <select>
+                        <option>Todos os gêneros</option>
+                        <option>Masculino</option>
+                        <option>Feminino</option>
+                    </select>
+
+                    <label>Nota</label>
+                    <select>
+                        <option>Todas as notas</option>
+                    </select>
+
+                    <button>Aplicar Filtros</button>
+                </div>
+            </div>
+
+            <!-- Área principal -->
+            <div class="main">
+                <div class="form-box">
+                    <div class="form-header">
+                        <h2>Meu Diário de Leitura</h2>
+                        <button>+ Registrar Leitura</button>
+                    </div>
+
+                    <form>
+                        <input type="text" placeholder="Título do Livro">
+                        <input type="text" placeholder="Autor">
+
+                        <select>
+                            <option>Todos os gêneros</option>
+                            <option>Narrativo</option>
+                            <option>Fantasia</option>
+                            <option>Aventura</option>
+                            <option>Romance</option>
+                        </select>
+                        <input type="number" placeholder="Total de Páginas">
+
+                        <input type="number" placeholder="Tempo de Leitura (horas)">
+                        <select>
+                            <option>Selecione uma nota</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+
+                        <textarea placeholder="Compartilhe sua opinião sobre o livro..."></textarea>
+
+                        <div class="form-actions">
+                            <button class="btn-cancelar">Cancelar</button>
+                            <button class="btn-registrar">Registrar Leitura</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="livros">
+                    <div class="livro-card">
+                        <div class="capa">Capa do Livro</div>
+                        <h4>O Senhor dos Anéis</h4>
+                        <p>J.R.R. Tolkien</p>
+                        <p>⭐ 5.0</p>
+                        <p>Fantasia • 1216 págs</p>
+                        <button>Recomendar</button>
+                    </div>
+
+                    <div class="livro-card">
+                        <div class="capa">Capa do Livro</div>
+                        <h4>Duna</h4>
+                        <p>Frank Herbert</p>
+                        <p>⭐ 4.0</p>
+                        <p>Ficção Científica • 896 págs</p>
+                        <button>Recomendar</button>
+                    </div>
+
+                    <div class="livro-card">
+                        <div class="capa">Capa do Livro</div>
+                        <h4>Orgulho e Preconceito</h4>
+                        <p>Jane Austen</p>
+                        <p>⭐ 5.0</p>
+                        <p>Romance • 432 págs</p>
+                        <button>Recomendar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script src="../script.js"></script>
+</body>
+
+</html>

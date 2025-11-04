@@ -1,0 +1,206 @@
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Topbar */
+header {
+  background-color: #fff;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+header input[type="search"] {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Layout principal */
+.container {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+}
+
+/* Sidebar esquerda */
+.sidebar {
+  width: 220px;
+}
+
+.perfil {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.perfil img {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.perfil h3 {
+  margin: 10px 0 5px;
+}
+
+.perfil p {
+  color: #555;
+  font-size: 14px;
+}
+
+.filtros {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.filtros select,
+.filtros button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filtros button {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Área principal */
+.main {
+  flex-grow: 1;
+}
+
+.form-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-header h2 {
+  margin: 0;
+}
+
+.form-header button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 20px;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form textarea {
+  grid-column: span 2;
+  resize: vertical;
+  height: 80px;
+}
+
+.form-actions {
+  grid-column: span 2;
+  text-align: right;
+}
+
+.form-actions button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn-cancelar {
+  background-color: #ddd;
+}
+
+.btn-registrar {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Cards de livros */
+.livros {
+  display: flex;
+  gap: 20px;
+}
+
+.livro-card {
+  background: #fff;
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.livro-card .capa {
+  background: #ddd;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+}
+
+.livro-card h4 {
+  margin: 10px 0 0;
+}
+
+.livro-card p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.livro-card button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 12px;
+}
