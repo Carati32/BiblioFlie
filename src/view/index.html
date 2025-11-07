@@ -31,28 +31,30 @@
                 </p>
             </div>
 
-            <div class="filtros">
+      <div class="filtros">
                 <h4>Filtros</h4>
-                <label>Gênero</label>
-                <select>
-                    <option>Todos os gêneros</option>
-                    <option>Narrativo</option>
-                    <option>Fantasia</option>
-                    <option>Aventura</option>
-                    <option>Romance</option>
+                <label for="filtro-genero">Gênero</label>
+                <select id="filtro-genero">
+                    <option value="todos">Todos os gêneros</option>
+                    <option value="narrativo">Narrativo</option>
+                    <option value="fantasia">Fantasia</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="romance">Romance</option>
+                    <option value="ficcao-cientifica">Ficção Científica</option>
                 </select>
 
-                <label>Nota</label>
-                <select>
-                    <option>Todas as notas</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <label for="filtro-nota">Nota</label>
+                <select id="filtro-nota">
+                    <option value="todas">Todas as notas</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
 
-                <button>Aplicar Filtros</button>
+
+                <button id="btn-aplicar-filtros">Aplicar Filtros</button>
             </div>
         </div>
 
@@ -98,7 +100,7 @@
             </div>
 
             <div class="livros">
-                <div class="livro-card">
+                <div class="livro-card" data-genero="fantasia" data-nota="5">
                     <div class="capa">Capa do Livro</div>
                     <h4>O Senhor dos Anéis</h4>
                     <p>J.R.R. Tolkien</p>
@@ -107,7 +109,7 @@
                     <button>Recomendar</button>
                 </div>
 
-                <div class="livro-card">
+                <div class="livro-card" data-genero="ficcao-cientifica" data-nota="4">
                     <div class="capa">Capa do Livro</div>
                     <h4>Duna</h4>
                     <p>Frank Herbert</p>
@@ -116,7 +118,7 @@
                     <button>Recomendar</button>
                 </div>
 
-                <div class="livro-card">
+                <div class="livro-card" data-genero="romance" data-nota="5">
                     <div class="capa">Capa do Livro</div>
                     <h4>Orgulho e Preconceito</h4>
                     <p>Jane Austen</p>

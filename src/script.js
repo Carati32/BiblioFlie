@@ -2,98 +2,88 @@ const botao = document.getElementById("btnMostrarForm");
 const form = document.getElementById("formLeitura");
 const cancelar = document.querySelector(".btn-cancelar");
 const btnCriar = document.getElementById("btnCriar");
-
+const containerLivros = document.querySelector(".livros");
 
 botao.addEventListener("click", () => {
     form.classList.remove("hidden");
 });
 
-
 cancelar.addEventListener("click", (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     form.classList.add("hidden");
 });
 
-
-btnCriar.addEventListener("click", async (e) => {
+btnCriar.addEventListener("click", (e) => {
     e.preventDefault();
 
     const titulo = document.getElementById("titulo").value.trim();
-    const autor = document.getElementById("nome").value.trim();
-    const genero = document.getElementById("genero").value.trim();
-    const total_pagina = Number(document.getElementById("paginas").value) || 0;
-    const tempo_leitura_hora = Number(document.getElementById("tempo").value) || 0;
-    const nota = Number(document.getElementById("nota").value) || 0;
-    const resenha = document.getElementById("resenha").value.trim();
+    const genero = document.getElementById("genero").value; 
+    const nota = document.getElementById("nota").value; 
+    
+    const novoLivroData = {
+        titulo: titulo || "Livro Sem Título",
+        autor: document.getElementById("nome").value.trim() || "Desconhecido",
+        genero: genero,
+        nota: nota === "Selecione uma nota" ? "-" : nota,
+        total_pagina: Number(document.getElementById("paginas").value) || "-"
+    };
 
-    const livro = {
-        usuario_id: 1,
-        titulo,
-        autor,
-        genero,
-        total_pagina,
-        tempo_leitura_hora,
-        nota,
-        resenha
-    }
-
-    console.log("Livro a ser enviado:", livro);
-
-    const data = await criarLeitura(livro);
-
-    if (!data) {
-        console.log("Falha ao criar");
-        return;
-    }
-
-    criarCard(data);
+    criarCard(novoLivroData);
     form.classList.add("hidden");
+    form.reset(); 
 });
 
+function criarCard(data) {
+    const card = document.createElement("div");
+    card.classList.add("livro-card");
+    
+    card.setAttribute('data-genero', data.genero.toLowerCase().replace(/\s/g, '-'));
+    card.setAttribute('data-nota', String(data.nota));
 
-async function criarLeitura(livro) {
-    try {
-        const response = await fetch("http://localhost:3000/registrar", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(livro),
-        });
+    card.innerHTML = `
+        <div class="capa">Capa do Livro</div>
+        <h4>${data.titulo}</h4>
+        <p>${data.autor}</p>
+        <p>⭐ ${data.nota}</p>
+        <p>${data.genero} • ${data.total_pagina} págs</p>
+        <button>Recomendar</button>
+    `;
 
-        const data = await response.json();
-        console.log("Retorno da API:", data);
-
-        if (response.ok) {
-            return data;
-        }
-
-        return null;
-
-    } catch (error) {
-        console.error("Erro ao registrar o livro:", error);
-        return null;
-    }
+    containerLivros.prepend(card);
 }
 
 
 
-function criarCard(data) {
-    const container = document.querySelector(".livros");
-    if (!container) {
-        console.error("ERRO: container não existe!");
-        return;
-    }
+const selectGeneroFiltro = document.getElementById('filtro-genero');
+const selectNotaFiltro = document.getElementById('filtro-nota');
+const btnAplicarFiltros = document.getElementById('btn-aplicar-filtros');
 
-    const card = document.createElement("div");
-    card.classList.add("livro-card");
+btnAplicarFiltros.addEventListener('click', aplicarFiltrosVisuais);
 
-    card.innerHTML = `
-        <div class="capa">Capa do Livro</div>
-        <h4>${data.titulo ?? "(Sem título)"}</h4>
-        <p>${data.autor ?? "Desconhecido"}</p>
-        <p>⭐ ${data.nota ?? "-"}</p>
-        <p>${data.genero ?? "-"} • ${data.total_pagina ?? "-"} págs</p>
-        <button>Recomendar</button>
-    `;
+function aplicarFiltrosVisuais() {
+    const generoSelecionado = selectGeneroFiltro.value;
+    const notaSelecionada = selectNotaFiltro.value;
 
-    container.prepend(card);
+    const todosOsCards = document.querySelectorAll('.livro-card');
+
+    todosOsCards.forEach(card => {
+        const generoDoLivro = card.getAttribute('data-genero');
+        const notaDoLivro = card.getAttribute('data-nota');
+
+        let mostrarCard = true;
+
+        if (generoSelecionado !== 'todos' && generoDoLivro !== generoSelecionado) {
+            mostrarCard = false;
+        }
+
+        if (notaSelecionada !== 'todas' && notaDoLivro !== notaSelecionada) {
+            mostrarCard = false;
+        }
+
+        if (mostrarCard) {
+            card.style.display = ''; 
+        } else {
+            card.style.display = 'none'; 
+        }
+    });
 }

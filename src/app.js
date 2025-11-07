@@ -17,6 +17,34 @@ app.get("/", (req, res) => {
   res.send("API Bibliofile funcionando")
 })
 
+app.get("/leitura", async (req, res) => {
+  const { query } = req
+  const pagina = Math.max(0, (Number(query.pagina) || 1) - 1)
+  const quantidade = Math.max(1, Number(query.quantidade) || 10)
+  const offset = pagina * quantidade
+
+  try {
+    const [livros] = await pool.query(
+      `SELECT id, usuario_id, titulo, autor, genero, total_pagina, tempo_leitura_hora, nota, resenha
+       FROM leitura
+       ORDER BY id ASC
+       LIMIT ? OFFSET ?`,
+      [quantidade, offset]
+    )
+
+    const [total] = await pool.query(`SELECT COUNT(*) AS total FROM leitura`)
+
+    res.json({
+      livros,
+      total: total[0].total
+    })
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
+
+
+
 app.post("/registrar", async (req, res) => {
   try {
     const {
